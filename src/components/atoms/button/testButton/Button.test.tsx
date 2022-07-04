@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { composeStories } from "@storybook/testing-react";
-import * as stories from "./SampleButton.stories";
+import * as stories from "./Button.stories";
 
 /**
  * StorybookのStoryをインポートした後、
