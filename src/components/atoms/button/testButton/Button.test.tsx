@@ -8,13 +8,22 @@ import * as stories from "./Button.stories";
  * コンポーネントへ変換する。
  */
 
-const { Default } = composeStories(stories);
+const { Default, Outlined } = composeStories(stories);
 
 /**
- * テストケース
+ * テストケース Default
  */
 test("render button with default args", () => {
   render(<Default>Button</Default>);
+  const buttonElement = screen.getByText(/Button/i);
+  expect(buttonElement).not.toBeNull();
+});
+
+/**
+ * テストケース Outlined
+ */
+test("render button with outlined args", () => {
+  render(<Outlined>Button</Outlined>);
   const buttonElement = screen.getByText(/Button/i);
   expect(buttonElement).not.toBeNull();
 });
