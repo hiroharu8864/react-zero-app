@@ -9,9 +9,12 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
+    "@storybook/react": "6.5.9",
+    "clsx": "1.2.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-scripts": "4.0.3",
+    "storybook": "6.5.9",
     "styled-components": "5.3.5"
   },
   "devDependencies": {
