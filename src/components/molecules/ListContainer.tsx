@@ -7,6 +7,7 @@ type ListItem = {
 };
 type Props = {
   listItems: ListItem[];
+  onClickDelete: (id: string) => void;
 };
 
 const SOuterCard = styled.div`
@@ -35,8 +36,26 @@ const SCardUl = styled.ul`
   list-style: none;
 `;
 
+const SButton = styled.button`
+  color: #ffffff;
+  background-color: #cc6633;
+  padding: 8px 40px;
+  border: none;
+  border-radius: 1000px;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+`;
+
 export const ListContainer: FC<Props> = memo((Props) => {
-  const { listItems } = Props;
+  const { listItems, onClickDelete } = Props;
+
+  const onClickDeleteButton = (id: string) => {
+    // console.log("id ", id);
+    onClickDelete(id);
+  };
 
   return (
     <>
@@ -48,6 +67,9 @@ export const ListContainer: FC<Props> = memo((Props) => {
                 <li key={item.id}>
                   {item.content.name} {item.content.price}
                 </li>
+                <SButton onClick={() => onClickDeleteButton(item.id)}>
+                  DELETE
+                </SButton>
               </SInnerCard>
             );
           })}

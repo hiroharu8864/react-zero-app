@@ -16,11 +16,15 @@ export default function App() {
     setListItems((prevListItem) => [...prevListItem, listItem]);
     console.log("register now!");
   };
+  const deleteListItem = (id: string) => {
+    setListItems(listItems.filter((item) => item.id != id));
+  };
+
   return (
     <div className="App">
       <Header />
       <FormContainer onSubmit={onClick} />
-      <ListContainer listItems={listItems} />
+      <ListContainer onClickDelete={deleteListItem} listItems={listItems} />
     </div>
   );
 }
