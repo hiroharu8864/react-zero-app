@@ -2,6 +2,7 @@ import { ChangeEvent, FC, memo, ReactNode, useState } from "react";
 import styled from "styled-components";
 
 type Props = {
+  onSubmit: (data: { name: string; price: number; date: Date }) => void;
   children: ReactNode;
 };
 
@@ -29,12 +30,24 @@ const SInput = styled.input`
 
 const SButton = styled.button`
   margin-top: 24px;
+  color: #ffffff;
+  background-color: #cc6633;
+  padding: 8px 40px;
+  border: none;
+  border-radius: 1000px;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
 `;
 
 export const FormContainer: FC<Props> = memo((Props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState("");
+
+  const { children, onSubmit } = Props;
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -44,7 +57,11 @@ export const FormContainer: FC<Props> = memo((Props) => {
     setPrice(priceNum);
   };
   const onChangeDate = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
+    setDate(event.target.value);
+  };
+  const onClickRegister = () => {
+    const data = { name, price, date: new Date(date) };
+    onSubmit(data);
   };
 
   return (
@@ -62,6 +79,7 @@ export const FormContainer: FC<Props> = memo((Props) => {
           <label>Name: </label>
           <SInput type="date" value={date} onChange={onChangeDate}></SInput>
         </div>
+        <SButton onClick={onClickRegister}>Regist</SButton>
       </SFormContainer>
     </>
   );

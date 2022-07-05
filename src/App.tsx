@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 import { Header } from "../src/components/atoms/layout/Header";
 import { FormContainer } from "../src/components/molecules/FormContainer";
+import { ListContainer } from "../src/components/molecules/ListContainer";
 
 export default function App() {
   type ListItem = {
@@ -10,10 +11,16 @@ export default function App() {
   };
   const [listItems, setListItems] = useState<ListItem[]>([]);
 
+  const onClick = (data: { name: string; price: number; date: Date }) => {
+    const listItem = { id: Math.random().toString(), content: data };
+    setListItems((prevListItem) => [...prevListItem, listItem]);
+    console.log("register now!");
+  };
   return (
     <div className="App">
       <Header />
-      <FormContainer />
+      <FormContainer onSubmit={onClick} />
+      <ListContainer listItems={listItems} />
     </div>
   );
 }
