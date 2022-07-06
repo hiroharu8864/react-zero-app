@@ -42,6 +42,14 @@ const SButton = styled.button`
   }
 `;
 
+/** style={invalidStyle} */
+const invalidStyle = {
+  backgroundColor: "rgb(254, 155, 155)",
+  border: "2px",
+  borderColor: "rgb(172, 59, 18)",
+  color: "rgb(252, 33, 33)"
+};
+
 export const FormContainer: FC<Props> = memo((Props) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -72,11 +80,11 @@ export const FormContainer: FC<Props> = memo((Props) => {
           <SInput value={name} onChange={onChangeName}></SInput>
         </div>
         <div>
-          <label>Name: </label>
+          <label>Price: </label>
           <SInput type="number" value={price} onChange={onChangePrice}></SInput>
         </div>
         <div>
-          <label>Name: </label>
+          <label>Date: </label>
           <SInput type="date" value={date} onChange={onChangeDate}></SInput>
         </div>
         <SButton onClick={onClickRegister}>Regist</SButton>
